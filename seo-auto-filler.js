@@ -2,13 +2,13 @@
 Author: Jeremy Hawes
 Title: SEO Auto-Filler
 Description: Automatic Fixes for Simple SEO Best Practices
-Version: 1.0.3
+Version: 1.0.4
 */
 
 jQuery(function($) {
 	$(document).ready(function() {
 		var urlKeyword = 'https://codepen.io',
-				defaultAlt = 'Default Alt Tag';
+            defaultAlt = 'Default Alt Tag';
 
 		// Adds Default Alt Tag to All Images Missing One
 		$('img').each(function() {
@@ -21,8 +21,8 @@ jQuery(function($) {
 			$(this).not('[href*="' + urlKeyword + '"]').attr('target','_blank');
 		});
 		// Adds additional attributes to anchor tags with target="_blank"
-		$('img').each(function() {
-			if ($(this).attr('target')) {
+		$('a').each(function() {
+			if ($(this).attr('target', '_blank')) {
 				$(this).attr('rel', 'noopener noreferrer');
 			}
 		});
