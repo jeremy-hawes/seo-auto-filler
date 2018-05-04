@@ -2,7 +2,7 @@
 Author: Jeremy Hawes
 Title: SEO Auto-Filler
 Description: Automatic Fixes for Simple SEO Best Practices
-Version: 1.0.4
+Version: 1.0.5
 */
 
 jQuery(function($) {
@@ -10,20 +10,18 @@ jQuery(function($) {
 		var urlKeyword = 'https://codepen.io',
             defaultAlt = 'Default Alt Tag';
 
+        $('a').each(function() {
+            // Adds target _blank to all external links (missing chosen keyword)
+            $(this).not('[href*="' + urlKeyword + '"]').attr('target','_blank');
+            // Adds additional attributes to anchor tags with target="_blank"
+			if ($(this).attr('target', '_blank')) {
+				$(this).attr('rel', 'noopener noreferrer');
+			}
+		});
 		// Adds Default Alt Tag to All Images Missing One
 		$('img').each(function() {
 			if ($(this).attr('alt') == '' || !$(this).attr('alt')) {
 				$(this).attr('alt', defaultAlt);
-			}
-		});
-		// Adds target _blank to all external links (missing chosen keyword)
-		$('a').each(function() {
-			$(this).not('[href*="' + urlKeyword + '"]').attr('target','_blank');
-		});
-		// Adds additional attributes to anchor tags with target="_blank"
-		$('a').each(function() {
-			if ($(this).attr('target', '_blank')) {
-				$(this).attr('rel', 'noopener noreferrer');
 			}
 		});
 		// Force images with http to use https
