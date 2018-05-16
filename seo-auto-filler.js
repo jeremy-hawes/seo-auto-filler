@@ -2,7 +2,8 @@
 Author: Jeremy Hawes
 Title: SEO Auto-Filler
 Description: Automatic Fixes for Simple SEO Best Practices
-Version: 1.0.5
+Version: 1.0.6
+URL: https://github.com/jeremy-hawes/seo-auto-filler
 */
 
 jQuery(function($) {
@@ -16,6 +17,10 @@ jQuery(function($) {
             // Adds additional attributes to anchor tags with target="_blank"
 			if ($(this).attr('target', '_blank')) {
 				$(this).attr('rel', 'noopener noreferrer');
+			}
+            // Removes Title attributes if they are present
+            if ($(this).attr('title')) {
+				$(this).removeAttr('title');
 			}
 		});
 		// Adds Default Alt Tag to All Images Missing One
