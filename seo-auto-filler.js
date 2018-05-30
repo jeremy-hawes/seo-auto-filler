@@ -2,7 +2,7 @@
 Author: Jeremy Hawes
 Title: SEO Auto-Filler
 Description: Automatic Fixes for Simple SEO Best Practices
-Version: 1.0.6
+Version: 1.0.7
 URL: https://github.com/jeremy-hawes/seo-auto-filler
 */
 
@@ -36,6 +36,12 @@ jQuery(function($) {
 			$(this).attr('src', function() {
 				return n
 			});
+		});
+        // Remove 'type' attribute from <script> tags (deprecated in html5)
+		$('script').each(function(){
+			if ($(this).attr('type')) {
+				$(this).removeAttr('type');
+			}
 		});
 	});
 });
